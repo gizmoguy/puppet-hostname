@@ -1,11 +1,14 @@
 class hostname {
 
+  $hostbits = split($::clientcert, '[.]')
+  $hostname = $hostbits[0]
+
   file { '/etc/hostname':
     ensure  => present,
     owner   => root,
     group   => root,
     mode    => '0644',
-    content => "$::clientcert\n",
+    content => "$hostname\n",
     notify  => Exec['set-hostname'],
   }
 

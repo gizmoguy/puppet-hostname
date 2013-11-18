@@ -17,9 +17,4 @@ class hostname {
     unless  => '/usr/bin/test `hostname` = `/bin/cat /etc/hostname`',
   }
 
-  host { $::clientcert:
-    ensure => present,
-    ip     => $::ipaddress,
-  }
-
 }
